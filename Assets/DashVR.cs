@@ -23,7 +23,6 @@ public class DashVR : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         landingRay = new Ray(pointer.position, pointer.forward);
 
         if (Physics.Raycast(landingRay, out hit, distance))
@@ -32,26 +31,30 @@ public class DashVR : MonoBehaviour {
             Destroy(go);
             go = Instantiate(marker, hit.point, Quaternion.identity);
             go.transform.position = hit.point;
+            
         }
-
-        VRMethod();
-
-        if (Input.GetKeyDown("space"))
+        else
         {
-            Destroy(stop);
-            stop = Instantiate(marker, hit.point, Quaternion.identity);
-            isMoving = true;
+            
         }
 
+        // When moving
         if (isMoving)
         {
             Move(stop.transform);
         }
+        else
+        {
+            Move(transform);
+        }
+
+        VRMethod();
+        PCMethod();
+
     }
 
     public void Move(Transform target)
     {
-
         float moving = speed * Time.deltaTime;
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, new Vector3(target.position.x, 0, target.position.z), moving);
         if (Vector3.Distance(transform.localPosition, target.position) <= 1)
@@ -69,6 +72,16 @@ public class DashVR : MonoBehaviour {
             stop = Instantiate(stop, hit.point, Quaternion.identity);
             stop.transform.position = go.transform.position;
         }
-        
+    }
+
+    public void PCMethod()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            isMoving = true;
+            Destroy(stop);
+            stop = Instantiate(marker, hit.point, Quaternion.identity);
+            stop.transform.position = go.transform.position;
+        }
     }
 }

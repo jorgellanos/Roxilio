@@ -30,27 +30,25 @@ public class MoveToward : MonoBehaviour {
             Destroy(go);
             go = Instantiate(marker, hit.point, Quaternion.identity);
             go.transform.position = hit.point;
+            PCMethod();
+            VRMethod();
         }
-
-        VRMethod();
-
-        if (Input.GetKeyDown("space"))
+        else
         {
-            Destroy(stop);
-            stop = Instantiate(marker, hit.point, Quaternion.identity);
-            isMoving = true;
+            Destroy(go);
+            Move(stop.transform, 0);
         }
-
+        
         if (isMoving)
         {
-            Move(stop.transform);
+            Move(stop.transform, speed);
         }
     }
 
-    public void Move(Transform target)
+    public void Move(Transform target, float MSpeed)
     {
         
-        float moving = speed * Time.deltaTime;
+        float moving = MSpeed * Time.deltaTime;
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, new Vector3 (target.position.x, 0, target.position.z), moving);
         if (Vector3.Distance(transform.localPosition, target.position) <= 1)
         {
@@ -60,14 +58,25 @@ public class MoveToward : MonoBehaviour {
 
     public void VRMethod()
     {
-        /*if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))
+        if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))
         {
             isMoving = true;
             Destroy(stop);
             stop = Instantiate(stop, hit.point, Quaternion.identity);
             stop.transform.position = go.transform.position;
         }
-        */
+        
+    }
+
+    public void PCMethod()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            isMoving = true;
+            Destroy(stop);
+            stop = Instantiate(marker, hit.point, Quaternion.identity);
+            stop.transform.position = go.transform.position;
+        }
     }
 
 }
