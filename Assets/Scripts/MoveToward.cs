@@ -6,7 +6,7 @@ using Valve.VR;
 public class MoveToward : MonoBehaviour {
 
     public float distance;
-    public Transform pointer;
+    public Transform pointer, parent;
     public bool isMoving;
     public float speed;
     public GameObject marker, stop;
@@ -30,15 +30,15 @@ public class MoveToward : MonoBehaviour {
             Destroy(go);
             go = Instantiate(marker, hit.point, Quaternion.identity);
             go.transform.position = hit.point;
-            PCMethod();
-            VRMethod();
+            
         }
         else
         {
-            Destroy(go);
-            Move(stop.transform, 0);
         }
-        
+
+        PCMethod();
+        //VRMethod();
+
         if (isMoving)
         {
             Move(stop.transform, speed);
@@ -47,15 +47,15 @@ public class MoveToward : MonoBehaviour {
 
     public void Move(Transform target, float MSpeed)
     {
-        
-        float moving = MSpeed * Time.deltaTime;
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, new Vector3 (target.position.x, 0, target.position.z), moving);
-        if (Vector3.Distance(transform.localPosition, target.position) <= 1)
+
+        float moving = speed * Time.deltaTime;
+        parent.localPosition = Vector3.MoveTowards(parent.localPosition, target.position, moving);
+        if (Vector3.Distance(parent.localPosition, target.position) <= 1)
         {
             isMoving = false;
         }
     }
-
+    
     public void VRMethod()
     {
         if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))

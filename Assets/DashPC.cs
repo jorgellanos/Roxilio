@@ -10,13 +10,12 @@ public class DashPC : MonoBehaviour {
     public Transform pointer;
     public Transform parent;
     public bool isMoving;
-    public float speed, trigger;
+    public float speed;
     public RaycastHit hit;
     public Ray landingRay;
-    public GameObject marker;
+    public GameObject marker, marker2;
     public Animator an;
-    public GameObject marker2;
-    private GameObject go, stop;
+    private GameObject go;
     private LineRenderer ln;
     
     // Use this for initialization
@@ -29,37 +28,23 @@ public class DashPC : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        // Ray direction
         landingRay = new Ray(pointer.position, pointer.forward);
         Debug.DrawRay(transform.position, transform.forward * distance, Color.red);
 
-        VRMethod();
+        // Move when triggered
+        PCMethod();
+        //VRMethod();
 
+        // Show Marker at direction
         if (Physics.Raycast(landingRay, out hit, distance))
         {
-            // Marker
-            Destroy(go);
-            go = Instantiate(marker, hit.point, Quaternion.identity);
+            Destroy(go); // destroy clones
+            go = Instantiate(marker, hit.point, Quaternion.identity); // set marker 1
             go.transform.position = hit.point;
         }
-
-        if (Input.GetKeyDown("space"))
-        {
-            Destroy(stop);
-            stop = Instantiate(marker, hit.point, Quaternion.identity);
-            isMoving = true;
-        }
-
-        if (isMoving)
-        {
-            Move(stop.transform.position);
-        }
-
-        if (Input.GetKeyDown("space"))
-        {
-            isMoving = true;
-        }
         
-
+        
         if (isMoving)
         {
             Move(marker2.transform.position);
@@ -75,20 +60,21 @@ public class DashPC : MonoBehaviour {
     public void Move(Vector3 target)
     {
         float moving = speed * Time.deltaTime;
-        parent.localPosition = Vector3.MoveTowards(parent.localPosition, target, moving);
-        if (Vector3.Distance(parent.localPosition, target) <= 1)
+        parent.localPosition = Vector3.MoveTowards(new Vector3(parent.localPosition.x, 2, parent.localPosition.z), target, moving);
+        if (Vector3.Distance(new Vector3(parent.localPosition.x, 2, parent.localPosition.z), target) <= 1)
         {
             isMoving = false;
         }
     }
     
-
-    private void OnTriggerEnter(Collider other)
+    public void PCMethod()
     {
-        if (other.tag == "marker2")
+        if (Input.GetKeyDown("space"))
         {
-            Destroy(other.gameObject);
-            isMoving = false;
+            isMoving = true;
+            Destroy(marker2);
+            marker2 = Instantiate(marker2, hit.point, Quaternion.identity);
+            marker2.transform.position = go.transform.position;
         }
     }
 
@@ -97,9 +83,9 @@ public class DashPC : MonoBehaviour {
         if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))
         {
             isMoving = true;
-            Destroy(stop);
-            stop = Instantiate(marker2, hit.point, Quaternion.identity);
-            stop.transform.position = go.transform.position;
+            Destroy(marker2); // Destroy clones
+            marker2 = Instantiate(marker2, hit.point, Quaternion.identity); // Set marker 2
+            marker2.transform.position = go.transform.position;
         }
     }
 }
