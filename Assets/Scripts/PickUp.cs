@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class PickUp : MonoBehaviour {
-
+    [SteamVR_DefaultAction("Squeeze")]
     public bool grabbed;
     public float dist;
 
@@ -11,6 +12,57 @@ public class PickUp : MonoBehaviour {
     void Start()
     {
         grabbed = false;
+    }
+
+    private void Update()
+    {
+        if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 1)
+        {
+            Debug.Log(SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any));
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "hand")
+        {
+            Debug.Log("Control touched the tarro");
+            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) < 0)
+            {
+                Debug.Log("pressing that shit");
+                transform.SetParent(other.transform.parent);
+                transform.position = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                Debug.Log("NotPressing");
+                transform.parent = null;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "hand")
+        {
+            Debug.Log("Control touched the tarro");
+            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) < 0)
+            {
+                Debug.Log("pressing that shit");
+                transform.SetParent(other.transform.parent);
+                transform.position = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                Debug.Log("NotPressing");
+                transform.parent = null;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Control stopped touching the tarro");
     }
 
     private void OnMouseEnter()
