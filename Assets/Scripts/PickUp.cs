@@ -5,38 +5,39 @@ using Valve.VR;
 
 public class PickUp : MonoBehaviour {
     [SteamVR_DefaultAction("Squeeze")]
-    public bool grabbed;
+    public bool grabbed,squeezed;
     public float dist;
+    public Vector3 theHand;
 
     // Use this for initialization
     void Start()
     {
         grabbed = false;
+        squeezed = false;
     }
 
     private void Update()
     {
-        if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 1)
+        if (squeezed)
         {
-            Debug.Log(SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any));
+            transform.position = theHand;
         }
     }
 
+    #region VR-Method
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "hand")
         {
+            theHand = other.transform.position;
             Debug.Log("Control touched the tarro");
-            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) < 0)
+            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 0.0f)
             {
-                Debug.Log("pressing that shit");
-                transform.SetParent(other.transform.parent);
-                transform.position = new Vector3(0, 0, 0);
+                squeezed = true;
             }
             else
             {
-                Debug.Log("NotPressing");
-                transform.parent = null;
+                squeezed = false;
             }
         }
     }
@@ -45,26 +46,27 @@ public class PickUp : MonoBehaviour {
     {
         if (other.tag == "hand")
         {
-            Debug.Log("Control touched the tarro");
-            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) < 0)
+            theHand = other.transform.position;
+            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 0.0f)
             {
-                Debug.Log("pressing that shit");
-                transform.SetParent(other.transform.parent);
-                transform.position = new Vector3(0, 0, 0);
+                squeezed = true;
             }
             else
             {
-                Debug.Log("NotPressing");
-                transform.parent = null;
+                squeezed = false;
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        theHand = new Vector3();
         Debug.Log("Control stopped touching the tarro");
     }
+    #endregion
 
+    // PC
+    #region PC-Method
     private void OnMouseEnter()
     {
         if (Input.GetMouseButtonDown(0))
@@ -114,4 +116,5 @@ public class PickUp : MonoBehaviour {
             dist += distChange * Time.deltaTime * 10;
         }
     }
+    #endregion
 }
