@@ -38,6 +38,7 @@ public class PickUp : MonoBehaviour {
             else
             {
                 squeezed = false;
+                theHand = new Vector3(0, 0, 0);
             }
         }
     }
@@ -54,13 +55,14 @@ public class PickUp : MonoBehaviour {
             else
             {
                 squeezed = false;
+                theHand = new Vector3(0, 0, 0);
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        theHand = new Vector3();
+        theHand = new Vector3(0,0,0);
         Debug.Log("Control stopped touching the tarro");
     }
     #endregion
