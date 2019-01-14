@@ -6,6 +6,7 @@ TagManager:
   tags:
   - marker2
   - hand
+  - fuego
   layers:
   - Default
   - TransparentFX
