@@ -18,10 +18,16 @@ public class PickUp : MonoBehaviour {
 
     private void Update()
     {
-        if (squeezed)
+        if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 0.3f)
         {
-            transform.position = theHand;
+            squeezed = true;
         }
+        else
+        {
+            squeezed = false;
+            theHand = new Vector3(0, 0, 0);
+        }
+
     }
 
     #region VR-Method
@@ -30,40 +36,29 @@ public class PickUp : MonoBehaviour {
         if (other.tag == "hand")
         {
             theHand = other.transform.position;
-            Debug.Log("Control touched the tarro");
-            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 0.0f)
+            if (squeezed)
             {
-                squeezed = true;
-            }
-            else
-            {
-                squeezed = false;
-                theHand = new Vector3(0, 0, 0);
+                transform.position = theHand;
             }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "hand")
+        theHand = other.transform.position;
+        if (squeezed)
         {
-            theHand = other.transform.position;
-            if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 0.0f)
-            {
-                squeezed = true;
-            }
-            else
-            {
-                squeezed = false;
-                theHand = new Vector3(0, 0, 0);
-            }
+            transform.position = theHand;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        theHand = new Vector3(0,0,0);
-        Debug.Log("Control stopped touching the tarro");
+        if (other.tag == "hand")
+        {
+            theHand = new Vector3(0, 0, 0);
+            Debug.Log("Control stopped touching the tarro");
+        }
     }
     #endregion
 
