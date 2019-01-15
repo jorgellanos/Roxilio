@@ -5,7 +5,7 @@ using Valve.VR;
 
 public class PickUp : MonoBehaviour {
     [SteamVR_DefaultAction("Squeeze")]
-    public bool grabbed,squeezed;
+    public bool grabbed,squeezed, touching;
     public float dist;
     public Vector3 theHand;
 
@@ -14,6 +14,7 @@ public class PickUp : MonoBehaviour {
     {
         grabbed = false;
         squeezed = false;
+        touching = false;
     }
 
     private void Update()
@@ -25,7 +26,14 @@ public class PickUp : MonoBehaviour {
         else
         {
             squeezed = false;
-            theHand = new Vector3(0, 0, 0);
+        }
+
+        if (squeezed && touching)
+        {
+            transform.position = theHand;
+        }
+        {
+            touching = false;
         }
 
     }
@@ -36,26 +44,25 @@ public class PickUp : MonoBehaviour {
         if (other.tag == "hand")
         {
             theHand = other.transform.position;
-            if (squeezed)
-            {
-                transform.position = theHand;
-            }
+            touching = true;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        theHand = other.transform.position;
-        if (squeezed)
+        if (other.tag == "hand")
         {
-            transform.position = theHand;
+            theHand = other.transform.position;
+            touching = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        touching = false;
         if (other.tag == "hand")
         {
+            
             theHand = new Vector3(0, 0, 0);
             Debug.Log("Control stopped touching the tarro");
         }
