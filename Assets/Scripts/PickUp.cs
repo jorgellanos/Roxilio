@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
+[RequireComponent(typeof(SteamVR_TrackedObject))]
 public class PickUp : MonoBehaviour {
     [SteamVR_DefaultAction("Squeeze")]
     public bool grabbed,squeezed, touching;
     public float dist;
-    public Vector3 theHand;
+    public Vector3 theHand, velocity;
+    SteamVR_TrackedObject trackedObject;
 
     // Use this for initialization
     void Start()
@@ -19,6 +21,7 @@ public class PickUp : MonoBehaviour {
 
     private void Update()
     {
+        velocity = this.GetComponent<Rigidbody>().velocity;
         if (SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any) > 0.3f)
         {
             squeezed = true;
