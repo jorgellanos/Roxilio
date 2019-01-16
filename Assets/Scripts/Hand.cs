@@ -34,12 +34,22 @@ public class Hand : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (!other.gameObject.CompareTag("ObjetoSuelto"))
+        {
+            return;
+        }
+
+        contacts.Add(other.gameObject.GetComponent<Interact>());
     }
 
     private void OnTriggerExit(Collider other)
     {
-        
+        if (!other.gameObject.CompareTag("ObjetoSuelto"))
+        {
+            return;
+        }
+
+        contacts.Remove(other.gameObject.GetComponent<Interact>());
     }
 
     public void PickUp()
