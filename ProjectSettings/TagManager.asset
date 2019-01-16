@@ -7,6 +7,7 @@ TagManager:
   - marker2
   - hand
   - fuego
+  - ObjectoSuelto
   layers:
   - Default
   - TransparentFX
