@@ -89,7 +89,7 @@ public class Hand : MonoBehaviour {
         }
 
         // apply velocity
-        Rigidbody target = GetComponent<Rigidbody>();
+        Rigidbody target = current.GetComponent<Rigidbody>();
         target.velocity = pose.GetVelocity();
         target.angularVelocity = pose.GetAngularVelocity();
 
