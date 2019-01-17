@@ -65,11 +65,11 @@
     <Compile Include="Assets\Scripts\ChangeMaterial.cs" />
     <Compile Include="Assets\Scripts\DashPC.cs" />
     <Compile Include="Assets\Scripts\DashVR.cs" />
+    <Compile Include="Assets\Scripts\Hand.cs" />
     <Compile Include="Assets\Scripts\ImageAlpha.cs" />
+    <Compile Include="Assets\Scripts\Interact.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\MoveToward.cs" />
-    <Compile Include="Assets\Scripts\PickUp.cs" />
-    <Compile Include="Assets\Scripts\RightHand.cs" />
     <Compile Include="Assets\Scripts\Teleport.cs" />
     <Compile Include="Assets\Scripts\Vida\Daño.cs" />
     <Compile Include="Assets\Scripts\Vida\Heal.cs" />
