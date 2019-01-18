@@ -57,7 +57,7 @@ public class DashPC : MonoBehaviour {
     public void Move(Vector3 target)
     {
         float moving = speed * Time.deltaTime;
-        parent.localPosition = Vector3.MoveTowards(new Vector3(parent.localPosition.x, 2, parent.localPosition.z), target, moving);
+        parent.localPosition = Vector3.MoveTowards(new Vector3(parent.localPosition.x, 0, parent.localPosition.z), target, moving);
         dashDistance = Vector3.Distance(new Vector3(parent.localPosition.x, 0, parent.localPosition.z), target);
         if (Vector3.Distance(new Vector3(parent.localPosition.x, 0, parent.localPosition.z), target) <= 2.5f)
         {
