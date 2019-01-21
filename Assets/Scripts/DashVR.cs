@@ -33,7 +33,7 @@ public class DashVR : MonoBehaviour {
         Debug.DrawRay(transform.position, transform.forward * distance, Color.red);
 
         // Move when triggered
-        VRMethod();
+        //VRMethod();
 
         // Show Marker at direction
         if (Physics.Raycast(landingRay, out hit, distance))
@@ -58,15 +58,15 @@ public class DashVR : MonoBehaviour {
     public void Move(Vector3 target)
     {
         float moving = speed * Time.deltaTime;
-        parent.localPosition = Vector3.MoveTowards(new Vector3(parent.localPosition.x, -2.3f, parent.localPosition.z), target, moving);
-        dashDistance = Vector3.Distance(new Vector3(parent.localPosition.x, -2.3f, parent.localPosition.z), target);
-        if (Vector3.Distance(new Vector3(parent.localPosition.x, -2.3f, parent.localPosition.z), target) <= 1f)
+        parent.localPosition = Vector3.MoveTowards(new Vector3(parent.localPosition.x, 0, parent.localPosition.z), target, moving);
+        dashDistance = Vector3.Distance(new Vector3(parent.localPosition.x, 0, parent.localPosition.z), target);
+        if (Vector3.Distance(new Vector3(parent.localPosition.x, 0, parent.localPosition.z), target) <= 2.5f)
         {
             isMoving = false;
         }
     }
 
-    public void VRMethod()
+    /*public void VRMethod()
     {
         if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))
         {
@@ -75,6 +75,6 @@ public class DashVR : MonoBehaviour {
             marker2 = Instantiate(marker2, hit.point, Quaternion.identity);
             marker2.transform.position = go.transform.position;
         }
-    }
+    }*/
     
 }

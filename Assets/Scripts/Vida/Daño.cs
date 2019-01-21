@@ -35,7 +35,7 @@ namespace vida {
             {
                 // ... the player is in range.
                 playerInRange = true;
-                Debug.Log("En rango!");
+                //Debug.Log("En rango!");
                 Debug.Log(vidaJugador.currentHealth);
             }
         }
@@ -55,9 +55,9 @@ namespace vida {
         {
             timer = 0f;
             // If the player has health to lose...
-            if (vidaJugador.currentHealth > 0)
+            if (vidaJugador.currentHealth >= 0)
             {
-                Debug.Log("ataco");
+                //Debug.Log("ataco");
                 // ... damage the player.
                 vidaJugador.TakeDamage(attackDamage);
             }

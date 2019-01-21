@@ -7,27 +7,37 @@ namespace vida
 { 
     public class VidaJugador : MonoBehaviour {
 
+        public Animator anim;
         public int startingHealth = 100;                            // The amount of health the player starts the game with.
         public int currentHealth;                                   // The current health the player has.
-
+        public int startingLifes = 5;
+        public int currentLifes;
         bool isDead;                                                // Whether the player is dead.
-        bool damaged;                                               // True when the player gets damaged.
         public Text uiVida;
+        float timer;
+        float timeToRespawn = 15f;
 
         void Awake()
         {
             // Set the initial health of the player.
             currentHealth = startingHealth;
+            currentLifes = startingLifes;
             uiVida.text = ("Vida: " + currentHealth);
 
         }
 
-
+        private void Update()
+        {
+            timer += Time.deltaTime;
+            if (isDead && timer >= timeToRespawn)
+            {
+                Respawn();
+            }
+        }
 
         public void TakeDamage(int amount)
         {
             // Set the damaged flag so the screen will flash.
-            damaged = true;
 
             // Reduce the current health by the damage amount.
             currentHealth -= amount;
@@ -42,8 +52,6 @@ namespace vida
 
         public void TakeHeal(int amount)
         {
-            damaged = false;
-
             currentHealth += amount;
             uiVida.text = ("Vida: " + currentHealth);
 
@@ -58,7 +66,22 @@ namespace vida
         void Death()
         {
             // Set the death flag so this function won't be called again.
+            uiVida.text = ("Vida: " + "0");
             isDead = true;
+            currentLifes = currentLifes - 1;
+            anim.SetTrigger("FadeOut");
+        }
+
+        void Respawn()
+        {
+            if (isDead && currentLifes >= 0)
+            {
+                currentHealth = 100;
+                Debug.Log("Moriste" + currentLifes);
+                anim.SetTrigger("FadeIn");
+                uiVida.text = ("Vida: " + currentHealth);
+                isDead = false;
+            }
         }
     }
 }

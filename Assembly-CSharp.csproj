@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Teleport.cs" />
     <Compile Include="Assets\Scripts\Vida\Daño.cs" />
     <Compile Include="Assets\Scripts\Vida\Heal.cs" />
+    <Compile Include="Assets\Scripts\Vida\MovementTouchpad.cs" />
     <Compile Include="Assets\Scripts\Vida\VidaJugador.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_TestThrow.cs" />

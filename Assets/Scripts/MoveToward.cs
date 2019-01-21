@@ -56,7 +56,7 @@ public class MoveToward : MonoBehaviour {
         }
     }
     
-    public void VRMethod()
+   /*public void VRMethod()
     {
         if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))
         {
@@ -66,7 +66,7 @@ public class MoveToward : MonoBehaviour {
             stop.transform.position = go.transform.position;
         }
         
-    }
+    }*/
 
     public void PCMethod()
     {
