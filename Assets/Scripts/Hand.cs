@@ -6,6 +6,7 @@ using Valve.VR;
 public class Hand : MonoBehaviour {
 
     public SteamVR_Action_Boolean grabbing = null;
+    public SceneControllerScript doors;
 
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
@@ -40,6 +41,11 @@ public class Hand : MonoBehaviour {
         }
 
         contacts.Add(other.gameObject.GetComponent<Interact>());
+
+        if (other.tag == "Manilla")
+        {
+
+        }
     }
 
     private void OnTriggerExit(Collider other)

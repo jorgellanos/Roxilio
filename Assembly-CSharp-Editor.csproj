@@ -86,6 +86,7 @@
     <Compile Include="Assets\SteamVR\Input\Editor\SteamVR_Input_Generator.cs" />
     <Compile Include="Assets\SteamVR\Input\Editor\SteamVR_Input_LiveWindow.cs" />
     <Compile Include="Assets\SteamVR\Input\Editor\SteamVR_Input_PostProcessBuild.cs" />
+    <Compile Include="Assets\unity-chan!\Unity-chan! Model\Editor\CreateLocatorHere.cs" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>C:/Users/jorge/Desktop/misWEAITAS/HorrorVR/Horror1.1/Roxilio/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>

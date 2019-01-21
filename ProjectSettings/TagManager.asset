@@ -8,6 +8,7 @@ TagManager:
   - hand
   - fuego
   - ObjetoSuelto
+  - Manilla
   layers:
   - Default
   - TransparentFX
