@@ -66,7 +66,7 @@ public class DashVR : MonoBehaviour {
         }
     }
 
-    /*public void VRMethod()
+    public void VRMethod()
     {
         if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))
         {
@@ -75,6 +75,6 @@ public class DashVR : MonoBehaviour {
             marker2 = Instantiate(marker2, hit.point, Quaternion.identity);
             marker2.transform.position = go.transform.position;
         }
-    }*/
+    }
     
 }

@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -28,6 +29,7 @@ MonoBehaviour:
   - __actions_default_in_SkeletonLeftHand
   - __actions_default_in_SkeletonRightHand
   - __actions_default_in_Squeeze
+  - __actions_default_in_MoveTouchpad
   - __actions_default_out_Haptic
   - __actions_platformer_in_Move
   - __actions_platformer_in_Jump
@@ -44,6 +46,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3aedf0d0286424248903d2fb16e01b8b, type: 2}
   - {fileID: 11400000, guid: e758906a76931b249a6d8dd331e46ec8, type: 2}
   - {fileID: 11400000, guid: 0bc1747f18b317f4b8ead25ce0c27e45, type: 2}
+  - {fileID: 11400000, guid: 657b508ea44607d42800a80bd53786ee, type: 2}
   - {fileID: 11400000, guid: 2df2a85bb7e27b74db535826335f84cd, type: 2}
   - {fileID: 11400000, guid: 78c206e9d10d2dc459bde914e5000239, type: 2}
   - {fileID: 11400000, guid: eabe6ac3d8812594c98d4e6edbd4921f, type: 2}
