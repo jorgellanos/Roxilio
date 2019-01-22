@@ -6,7 +6,6 @@ using Valve.VR;
 public class Hand : MonoBehaviour {
 
     public SteamVR_Action_Boolean grabbing = null;
-    public SceneControllerScript doors;
 
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
@@ -44,7 +43,71 @@ public class Hand : MonoBehaviour {
 
         if (other.tag == "Manilla")
         {
+            bool holded = false;
+            SceneControllerScript door = other.gameObject.GetComponent<SceneControllerScript>();
 
+            if (!door.doorFlag)
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = true;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
+            else
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = false;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Manilla")
+        {
+            bool holded = false;
+            SceneControllerScript door = other.gameObject.GetComponent<SceneControllerScript>();
+
+            if (!door.doorFlag)
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = true;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
+            else
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = false;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
         }
     }
 
