@@ -6,20 +6,30 @@ using Valve.VR;
 public class Hand : MonoBehaviour {
 
     public SteamVR_Action_Boolean grabbing = null;
+    public SteamVR_Action_Boolean clicked = null;
+    public SteamVR_Action_Vector2 padPos;
+
+    public bool up, down, left, right;
+    public Vector2 state;
 
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
     private Interact current = null;
     private List<Interact> contacts = new List<Interact>();
+    
 
     private void Awake()
     {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         joint = GetComponent<FixedJoint>();
+
+        GetComponent<Hand>().enabled = false;
     }
     
 	// Update is called once per frame
 	void Update () {
+
+        state = padPos.GetAxis(SteamVR_Input_Sources.Any);
 
         if (grabbing.GetStateDown(pose.inputSource))
         {
@@ -189,5 +199,81 @@ public class Hand : MonoBehaviour {
         }
 
         return nearest;
+    }
+
+    public void Estados()
+    {
+
+        if (clicked.GetStateDown(SteamVR_Input_Sources.Any))
+        {
+            //RIGHT
+            if (state.x > 0.7)
+            {
+                right = true;
+                if (!GetComponent<Hand>().enabled)
+                {
+                    GetComponent<DashVR>().enabled = false;
+                    GetComponent<Hand>().enabled = true;
+                }
+                else
+                {
+                    GetComponent<Hand>().enabled = false;
+                    GetComponent<DashVR>().enabled = true;
+                }
+            }
+            else
+            {
+                right = false;
+            }
+
+            //LEFT
+            if (state.x < -0.7)
+            {
+                left = true;
+                if (!GetComponent<Hand>().enabled)
+                {
+                    GetComponent<DashVR>().enabled = false;
+                    GetComponent<Hand>().enabled = true;
+                }
+                else
+                {
+                    GetComponent<Hand>().enabled = false;
+                    GetComponent<DashVR>().enabled = true;
+                }
+            }
+            else
+            {
+                left = false;
+            }
+
+            //UP
+            if (state.y > 0.7)
+            {
+                up = true;
+            }
+            else
+            {
+                up = false;
+            }
+
+            //DOWN
+            if (state.y < -0.7)
+            {
+                down = true;
+            }
+            else
+            {
+                down = false;
+            }
+        }
+
+        if (clicked.GetStateUp(SteamVR_Input_Sources.Any))
+        {
+            up = false;
+            down = false;
+            left = false;
+            right = false;
+        }
+
     }
 }

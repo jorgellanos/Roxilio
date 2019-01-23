@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -22,6 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3aedf0d0286424248903d2fb16e01b8b, type: 2}
   - {fileID: 11400000, guid: e758906a76931b249a6d8dd331e46ec8, type: 2}
   - {fileID: 11400000, guid: 0bc1747f18b317f4b8ead25ce0c27e45, type: 2}
+  - {fileID: 11400000, guid: ce15fe654d09c2e46b4ec2b91685cd66, type: 2}
   InteractUI: {fileID: 11400000, guid: 02629b54d8f25d74eb8f63874d101627, type: 2}
   Teleport: {fileID: 11400000, guid: 1225232201f0f5b429dee5ce84b46ccc, type: 2}
   GrabPinch: {fileID: 11400000, guid: 49a5252b84463f240b32f667a0bcdd64, type: 2}
@@ -30,3 +32,4 @@ MonoBehaviour:
   SkeletonLeftHand: {fileID: 11400000, guid: 3aedf0d0286424248903d2fb16e01b8b, type: 2}
   SkeletonRightHand: {fileID: 11400000, guid: e758906a76931b249a6d8dd331e46ec8, type: 2}
   Squeeze: {fileID: 11400000, guid: 0bc1747f18b317f4b8ead25ce0c27e45, type: 2}
+  ChangeState: {fileID: 11400000, guid: ce15fe654d09c2e46b4ec2b91685cd66, type: 2}
