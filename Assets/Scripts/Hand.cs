@@ -23,7 +23,9 @@ public class Hand : MonoBehaviour {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         joint = GetComponent<FixedJoint>();
 
-        GetComponent<Hand>().enabled = false;
+
+        GetComponent<DashVR>().enabled = false;
+        GetComponent<LineRenderer>().enabled = false;
     }
     
 	// Update is called once per frame
@@ -210,15 +212,15 @@ public class Hand : MonoBehaviour {
             if (state.x > 0.7)
             {
                 right = true;
-                if (!GetComponent<Hand>().enabled)
+                if (!GetComponent<DashVR>().enabled)
                 {
-                    GetComponent<DashVR>().enabled = false;
-                    GetComponent<Hand>().enabled = true;
+                    GetComponent<DashVR>().enabled = true;
+                    GetComponent<LineRenderer>().enabled = true;
                 }
                 else
                 {
-                    GetComponent<Hand>().enabled = false;
-                    GetComponent<DashVR>().enabled = true;
+                    GetComponent<DashVR>().enabled = false;
+                    GetComponent<LineRenderer>().enabled = false;
                 }
             }
             else
@@ -230,15 +232,15 @@ public class Hand : MonoBehaviour {
             if (state.x < -0.7)
             {
                 left = true;
-                if (!GetComponent<Hand>().enabled)
+                if (!GetComponent<DashVR>().enabled)
                 {
-                    GetComponent<DashVR>().enabled = false;
-                    GetComponent<Hand>().enabled = true;
+                    GetComponent<DashVR>().enabled = true;
+                    GetComponent<LineRenderer>().enabled = true;
                 }
                 else
                 {
-                    GetComponent<Hand>().enabled = false;
-                    GetComponent<DashVR>().enabled = true;
+                    GetComponent<DashVR>().enabled = false;
+                    GetComponent<LineRenderer>().enabled = false;
                 }
             }
             else
