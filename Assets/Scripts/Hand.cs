@@ -8,8 +8,7 @@ public class Hand : MonoBehaviour {
     public SteamVR_Action_Boolean grabbing = null;
     public SteamVR_Action_Boolean clicked = null;
     public SteamVR_Action_Vector2 padPos;
-
-    public bool up, down, left, right;
+    
     public Vector2 state;
 
     private SteamVR_Behaviour_Pose pose = null;
@@ -22,10 +21,6 @@ public class Hand : MonoBehaviour {
     {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         joint = GetComponent<FixedJoint>();
-
-
-        GetComponent<DashVR>().enabled = false;
-        GetComponent<LineRenderer>().enabled = false;
     }
     
 	// Update is called once per frame
@@ -49,6 +44,7 @@ public class Hand : MonoBehaviour {
         if (!other.gameObject.CompareTag("ObjetoSuelto"))
         {
             return;
+            
         }
 
         contacts.Add(other.gameObject.GetComponent<Interact>());
@@ -85,6 +81,7 @@ public class Hand : MonoBehaviour {
                 }
             }
         }
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -203,79 +200,6 @@ public class Hand : MonoBehaviour {
         return nearest;
     }
 
-    public void Estados()
-    {
 
-        if (clicked.GetStateDown(SteamVR_Input_Sources.Any))
-        {
-            //RIGHT
-            if (state.x > 0.7)
-            {
-                right = true;
-                if (!GetComponent<DashVR>().enabled)
-                {
-                    GetComponent<DashVR>().enabled = true;
-                    GetComponent<LineRenderer>().enabled = true;
-                }
-                else
-                {
-                    GetComponent<DashVR>().enabled = false;
-                    GetComponent<LineRenderer>().enabled = false;
-                }
-            }
-            else
-            {
-                right = false;
-            }
-
-            //LEFT
-            if (state.x < -0.7)
-            {
-                left = true;
-                if (!GetComponent<DashVR>().enabled)
-                {
-                    GetComponent<DashVR>().enabled = true;
-                    GetComponent<LineRenderer>().enabled = true;
-                }
-                else
-                {
-                    GetComponent<DashVR>().enabled = false;
-                    GetComponent<LineRenderer>().enabled = false;
-                }
-            }
-            else
-            {
-                left = false;
-            }
-
-            //UP
-            if (state.y > 0.7)
-            {
-                up = true;
-            }
-            else
-            {
-                up = false;
-            }
-
-            //DOWN
-            if (state.y < -0.7)
-            {
-                down = true;
-            }
-            else
-            {
-                down = false;
-            }
-        }
-
-        if (clicked.GetStateUp(SteamVR_Input_Sources.Any))
-        {
-            up = false;
-            down = false;
-            left = false;
-            right = false;
-        }
-
-    }
+    
 }
