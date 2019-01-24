@@ -6,28 +6,26 @@ using Valve.VR;
 public class Hand : MonoBehaviour {
 
     public SteamVR_Action_Boolean grabbing = null;
-    public SteamVR_Action_Boolean clicked = null;
+    public SteamVR_Action_Boolean gripped = null;
     public SteamVR_Action_Vector2 padPos;
-    
+
     public Vector2 state;
 
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
     private Interact current = null;
     private List<Interact> contacts = new List<Interact>();
-    
+
 
     private void Awake()
     {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         joint = GetComponent<FixedJoint>();
     }
-    
-	// Update is called once per frame
-	void Update () {
 
-        state = padPos.GetAxis(SteamVR_Input_Sources.Any);
-
+    // Update is called once per frame
+    void Update() {
+        
         if (grabbing.GetStateDown(pose.inputSource))
         {
             PickUp();
@@ -44,7 +42,7 @@ public class Hand : MonoBehaviour {
         if (!other.gameObject.CompareTag("ObjetoSuelto"))
         {
             return;
-            
+
         }
 
         contacts.Add(other.gameObject.GetComponent<Interact>());
@@ -81,7 +79,7 @@ public class Hand : MonoBehaviour {
                 }
             }
         }
-        
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -200,6 +198,12 @@ public class Hand : MonoBehaviour {
         return nearest;
     }
 
+    public void ChangeState()
+    {
+        if (true)
+        {
 
+        }
+    }
     
 }

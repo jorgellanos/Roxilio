@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabbing: {fileID: 11400000, guid: 49a5252b84463f240b32f667a0bcdd64, type: 2}
+  gripped: {fileID: 0}
+  padPos: {fileID: 0}
+  state: {x: 0, y: 0}
 --- !u!1 &1281447927
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +257,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabbing: {fileID: 11400000, guid: 49a5252b84463f240b32f667a0bcdd64, type: 2}
+  gripped: {fileID: 0}
+  padPos: {fileID: 0}
+  state: {x: 0, y: 0}
 --- !u!1 &2262772805757639131
 GameObject:
   m_ObjectHideFlags: 0
