@@ -6,10 +6,7 @@ using Valve.VR;
 public class Hand : MonoBehaviour {
 
     public SteamVR_Action_Boolean grabbing = null;
-    public SteamVR_Action_Boolean gripped = null;
-    public SteamVR_Action_Vector2 padPos;
-
-    public Vector2 state;
+    
 
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
@@ -197,13 +194,6 @@ public class Hand : MonoBehaviour {
 
         return nearest;
     }
-
-    public void ChangeState()
-    {
-        if (true)
-        {
-
-        }
-    }
+    
     
 }

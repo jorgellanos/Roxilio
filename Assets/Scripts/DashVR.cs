@@ -6,6 +6,9 @@ using Valve.VR;
 public class DashVR : MonoBehaviour {
     
     [SteamVR_DefaultAction("Teleport")]
+
+    public SteamVR_Action_Boolean move = null;
+
     public float distance, dashDistance;
     public Transform pointer;
     public Transform parent;
@@ -23,35 +26,18 @@ public class DashVR : MonoBehaviour {
     {
         isMoving = false;
         ln = this.GetComponent<LineRenderer>();
+        ln.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Ray direction
-        landingRay = new Ray(pointer.position, pointer.forward);
-        Debug.DrawRay(transform.position, transform.forward * distance, Color.red);
-
-        // Move when triggered
-        VRMethod();
-
-        // Show Marker at direction
-        if (Physics.Raycast(landingRay, out hit, distance))
-        {
-            Destroy(go); // destroy clones
-            go = Instantiate(marker, hit.point, Quaternion.identity); // set marker 1
-            go.transform.position = hit.point;
-        }
-
+        // Move when button up
+        ChangeState();
+        
         if (isMoving)
         {
             Move(marker2.transform.position);
-            //an.SetBool("walking", true);
-            //an.Play("Camera_Walk");
-        }
-        else
-        {
-            //an.SetBool("walking",false);
         }
     }
 
@@ -60,21 +46,46 @@ public class DashVR : MonoBehaviour {
         float moving = speed * Time.deltaTime;
         parent.localPosition = Vector3.MoveTowards(new Vector3(parent.localPosition.x, -2.3f, parent.localPosition.z), target, moving);
         dashDistance = Vector3.Distance(new Vector3(parent.localPosition.x, -2.3f, parent.localPosition.z), target);
-        if (Vector3.Distance(new Vector3(parent.localPosition.x, -2.3f, parent.localPosition.z), target) <= 1f)
+    }
+
+
+    public void SetLaser(bool enabled)
+    {
+        // enable/disable LASER
+        ln.enabled = enabled;
+
+        if (ln.enabled)
         {
-            isMoving = false;
+            // Ray direction
+            landingRay = new Ray(pointer.position, pointer.forward);
+            Debug.DrawRay(transform.position, transform.forward * distance, Color.red);
+        }
+
+        // Show Marker at direction
+        if (Physics.Raycast(landingRay, out hit, distance))
+        {
+            Destroy(go); // destroy clones
+            go = Instantiate(marker, hit.point, Quaternion.identity); // set marker 1
+            go.transform.position = hit.point;
         }
     }
 
-    public void VRMethod()
+    public void ChangeState()
     {
-        if (SteamVR_Input._default.inActions.Teleport.GetStateDown(SteamVR_Input_Sources.Any))
+        if (move.GetStateDown(SteamVR_Input_Sources.Any))
         {
+            SetLaser(true);
+            isMoving = false;
+        }
+
+        if (move.GetStateUp(SteamVR_Input_Sources.Any))
+        {
+            SetLaser(false);
             isMoving = true;
             Destroy(marker2);
             marker2 = Instantiate(marker2, hit.point, Quaternion.identity);
             marker2.transform.position = go.transform.position;
         }
     }
-    
+
 }
