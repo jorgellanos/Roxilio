@@ -6,21 +6,23 @@ using Valve.VR;
 public class Hand : MonoBehaviour {
 
     public SteamVR_Action_Boolean grabbing = null;
+    
 
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
     private Interact current = null;
     private List<Interact> contacts = new List<Interact>();
 
+
     private void Awake()
     {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         joint = GetComponent<FixedJoint>();
     }
-    
-	// Update is called once per frame
-	void Update () {
 
+    // Update is called once per frame
+    void Update() {
+        
         if (grabbing.GetStateDown(pose.inputSource))
         {
             PickUp();
@@ -37,9 +39,80 @@ public class Hand : MonoBehaviour {
         if (!other.gameObject.CompareTag("ObjetoSuelto"))
         {
             return;
+
         }
 
         contacts.Add(other.gameObject.GetComponent<Interact>());
+
+        if (other.tag == "Manilla")
+        {
+            bool holded = false;
+            SceneControllerScript door = other.gameObject.GetComponent<SceneControllerScript>();
+
+            if (!door.doorFlag)
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = true;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
+            else
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = false;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
+        }
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Manilla")
+        {
+            bool holded = false;
+            SceneControllerScript door = other.gameObject.GetComponent<SceneControllerScript>();
+
+            if (!door.doorFlag)
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = true;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
+            else
+            {
+                if (grabbing.GetStateDown(pose.inputSource) && !holded)
+                {
+                    door.doorFlag = false;
+                    holded = true;
+                }
+
+                if (grabbing.GetStateUp(pose.inputSource))
+                {
+                    holded = false;
+                }
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -121,4 +194,6 @@ public class Hand : MonoBehaviour {
 
         return nearest;
     }
+    
+    
 }

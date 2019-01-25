@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
@@ -309,11 +309,11 @@ PrefabInstance:
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1721526055}
+      objectReference: {fileID: 1710456451}
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1288705166}
+      objectReference: {fileID: 840382567}
     - target: {fileID: 482514, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -385,6 +385,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 285413787}
   m_PrefabAsset: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!21 &334865556
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &339316867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458974, guid: 4d293c8e162f3874b982baadd71153d2,
@@ -666,6 +701,9 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+    type: 3}
+  m_PrefabInstance: {fileID: 285413787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &788586697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -676,10 +714,6 @@ PrefabInstance:
     - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_Name
       value: CuboBueno (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4551579758199274, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_LocalPosition.x
@@ -839,10 +873,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CuboBueno (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4551579758199274, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.93
@@ -882,6 +912,40 @@ PrefabInstance:
       objectReference: {fileID: 1924748459}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
+--- !u!21 &840382567
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &886491480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4551579758199274, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1124,7 +1188,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4551579758199274, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1334,10 +1398,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CuboBueno (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4551579758199274, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.88
@@ -1431,6 +1491,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_SourcePrefab: {fileID: 100100000, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
 --- !u!1001 &1341419802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1441,10 +1502,6 @@ PrefabInstance:
     - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_Name
       value: CuboBueno (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4551579758199274, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1650,13 +1707,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &1546133734 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 20000014031267948, guid: 4d293c8e162f3874b982baadd71153d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 285413787}
-  m_PrefabAsset: {fileID: 0}
---- !u!43 &1721526055
+--- !u!43 &1710456451
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2009,13 +2060,6 @@ Transform:
   m_Father: {fileID: 1045002000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2110109494
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
     - target: {fileID: 1232405234904590, guid: 92004c47c953cc247842d8e6c92a6193, type: 3}
       propertyPath: m_Name
       value: CuboBueno (1)
