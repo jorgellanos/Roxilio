@@ -1,0 +1,2 @@
+C:\Users\jorge\Desktop\misWEAITAS\HorrorVR\Horror1.1\Roxilio\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\jorge\Desktop\misWEAITAS\HorrorVR\Horror1.1\Roxilio\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
