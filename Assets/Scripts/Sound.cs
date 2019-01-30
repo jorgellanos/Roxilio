@@ -7,17 +7,32 @@ public class Sound : MonoBehaviour
     public float moveVolume, impactVolume, awareness;
     public float soundRadio;
 
+    private SphereCollider ball;
+
     // Start is called before the first frame update
     void Start()
     {
         soundRadio = 0.1f;
         moveVolume = 0.1f;
         impactVolume = 0.1f;
+        ball = GetComponent<SphereCollider>();
+
     }
 
     private void Update()
     {
         awareness = moveVolume + impactVolume;
+        ball.radius = awareness * 0.5f;
+        
+        if (Input.GetKey("w"))
+        {
+            Moving(3);
+        }
+
+        if (!Input.anyKey)
+        {
+            Still();
+        }
     }
 
     public void Still()
@@ -28,17 +43,17 @@ public class Sound : MonoBehaviour
         }
     }
 
-    public void Moving()
+    public void Moving(float vel)
     {
         if (moveVolume < 100f)
         {
-            moveVolume += 5f * Time.deltaTime;
+            moveVolume += vel * Time.deltaTime;
         }
     }
 
-    public void Impact()
+    public void Impact(float vel)
     {
-        impactVolume += 20;
+        impactVolume += vel;
         if (impactVolume > 0f)
         {
             impactVolume -= 10f * Time.deltaTime;

@@ -9,6 +9,8 @@ TagManager:
   - fuego
   - ObjetoSuelto
   - Manilla
+  - Enemy
+  - PlayerPER
   layers:
   - Default
   - TransparentFX

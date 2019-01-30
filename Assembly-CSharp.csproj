@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Collide.cs" />
     <Compile Include="Assets\Scripts\DashPC.cs" />
     <Compile Include="Assets\Scripts\DashVR.cs" />
+    <Compile Include="Assets\Scripts\EnemyAWARENESS.cs" />
     <Compile Include="Assets\Scripts\Hand.cs" />
     <Compile Include="Assets\Scripts\ImageAlpha.cs" />
     <Compile Include="Assets\Scripts\Interact.cs" />
