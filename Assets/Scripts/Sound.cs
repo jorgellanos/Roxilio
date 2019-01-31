@@ -7,7 +7,7 @@ public class Sound : MonoBehaviour
     public float moveVolume, impactVolume, awareness;
     public float soundRadio;
 
-    private SphereCollider ball;
+    public GameObject ball;
 
     // Start is called before the first frame update
     void Start()
@@ -15,15 +15,14 @@ public class Sound : MonoBehaviour
         soundRadio = 0.1f;
         moveVolume = 0.1f;
         impactVolume = 0.1f;
-        ball = GetComponent<SphereCollider>();
-
+        
     }
 
     private void Update()
     {
         awareness = moveVolume + impactVolume;
-        ball.radius = awareness * 0.5f;
-        
+        ball.transform.localScale = new Vector3(awareness, awareness, awareness);
+
         if (Input.GetKey("w"))
         {
             Moving(3);

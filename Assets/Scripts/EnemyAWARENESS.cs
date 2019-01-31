@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAWARENESS : MonoBehaviour
 {
-    
+    public GameObject parent;
 
     // Start is called before the first frame update
     void Start()
@@ -17,20 +17,31 @@ public class EnemyAWARENESS : MonoBehaviour
     {
         
     }
+    
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "PlayerPER")
+        if (other.tag == "PlayerPER" || other.tag == "Player")
         {
             Debug.Log("AAAAAAAAA");
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "PlayerPER" || other.tag == "Player")
+        {
+            Debug.Log("AAAAAAAAA");
+            StareAt(other.gameObject);
+        }
+    }
+
     public void StareAt(GameObject player)
     {
-        Vector3 lookVector = player.transform.position - transform.position;
-        lookVector.y = transform.position.y;
+        Vector3 lookVector = player.transform.position - parent.transform.position;
+        lookVector.y = parent.transform.position.y;
         Quaternion rot = Quaternion.LookRotation(lookVector);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
+        parent.transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
+        Debug.Log("I SEE YOU");
     }
 }
