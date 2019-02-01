@@ -1,4 +1,3 @@
-sceneSetups:
-- path: Assets/Scenes/MecanicasCheche.unity
-  isLoaded: 1
-  isActive: 1
+version https://git-lfs.github.com/spec/v1
+oid sha256:62158a31f3544608865423cdfa2833004d6dabf3d549bcfc178862aac9dc9edd
+size 85
