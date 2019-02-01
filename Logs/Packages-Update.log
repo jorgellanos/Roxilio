@@ -1,12 +1,3 @@
-
-=== Thu Jan 17 22:48:32 2019
-
-Packages were changed.
-Update Mode: updateDependencies
-
-The following packages were added:
-  com.unity.collab-proxy@1.2.15
-The following packages were updated:
-  com.unity.analytics from version 2.0.16 to 3.2.2
-  com.unity.package-manager-ui from version 1.9.11 to 2.0.3
-  com.unity.textmeshpro from version 1.2.4 to 1.3.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:0952c9f09bca263d587d95d1c551c426559155cebf31c7457dcb4a57cf127627
+size 366
