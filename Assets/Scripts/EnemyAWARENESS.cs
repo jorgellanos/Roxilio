@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemyAWARENESS : MonoBehaviour
 {
-    public GameObject parent;
+    public Transform parent;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        speed = 2;
     }
 
     // Update is called once per frame
@@ -32,16 +33,13 @@ public class EnemyAWARENESS : MonoBehaviour
         if (other.tag == "PlayerPER" || other.tag == "Player")
         {
             Debug.Log("AAAAAAAAA");
-            StareAt(other.gameObject);
+            Search(other.transform.position);
         }
     }
 
-    public void StareAt(GameObject player)
+    public void Search(Vector3 target)
     {
-        Vector3 lookVector = player.transform.position - parent.transform.position;
-        lookVector.y = parent.transform.position.y;
-        Quaternion rot = Quaternion.LookRotation(lookVector);
-        parent.transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
-        Debug.Log("I SEE YOU");
+        float moving = speed * Time.deltaTime;
+        parent.localPosition = Vector3.MoveTowards(new Vector3(parent.localPosition.x, -2.3f, parent.localPosition.z), target, moving);
     }
 }
