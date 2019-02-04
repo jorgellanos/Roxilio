@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:a951835dd35a79967d0d946390890965f4e3113647f811db7aaf08afd5f50ef6
 size 507
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":0.0,"y":0.0,"z":0.10000000149011612},"rotation":{"x":0.08717229217290878,"y":-0.8995905518531799,"z":0.21045254170894624,"w":0.37262260913848879},"size":3.71449875831604,"orthographic":false}
+>>>>>>> parent of b08fbd63... Terrain Begin
 =======
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":0.0,"y":0.0,"z":0.10000000149011612},"rotation":{"x":0.08717229217290878,"y":-0.8995905518531799,"z":0.21045254170894624,"w":0.37262260913848879},"size":3.71449875831604,"orthographic":false}
 >>>>>>> parent of b08fbd63... Terrain Begin
